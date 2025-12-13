@@ -1,3 +1,5 @@
+![CI](https://github.com/oosei25/bank-customer-churn/actions/workflows/ci.yml/badge.svg)
+
 # Bank Customer Churn – End-to-End Modeling & Explainability
 
 This project simulates a real-world **member churn** use case for a retail bank / credit union.  
@@ -17,15 +19,18 @@ walk-through notebook.
 
 ```text
 bank-customer-churn/
+├── .github/
+│   └── workflows/
+│       └── ci.yml                        # GitHub Actions workflow (runs pytest)
 ├── churn_utils/
 │   ├── __init__.py
-│   ├── cleaning.py        # cleaning & type coercion
-│   ├── evaluation.py      # metrics, classification report, lift@k
-│   ├── explain.py         # SHAP-based global & local explanations
-│   ├── features.py        # feature engineering helpers
-│   ├── io.py              # data loading / saving
-│   ├── modeling.py        # train/test split & sklearn pipelines
-│   └── viz.py             # EDA plots (churn by segment, distributions)
+│   ├── cleaning.py                       # cleaning & type coercion
+│   ├── evaluation.py                     # metrics, classification report, lift@k
+│   ├── explain.py                        # SHAP-based global & local explanations
+│   ├── features.py                       # feature engineering helpers
+│   ├── io.py                             # data loading / saving
+│   ├── modeling.py                       # train/test split & sklearn pipelines
+│   └── viz.py                            # EDA plots (churn by segment, distributions)
 ├── data/
 │   ├── raw/
 │   │   ├── Bank_Churn_Data_Dictionary.csv # field descriptions
@@ -38,9 +43,15 @@ bank-customer-churn/
 │   └── 01_churn_eda_and_model_files/      # images referenced by the .md
 ├── outputs/
 │   └── shap_summary_xgb.png               # example SHAP summary plot
+├── tests/
+│   ├── conftest.py                        # adds project root to sys.path for tests
+│   ├── test_cleaning.py                   # checks cleaning / normalization
+│   ├── test_explain.py                    # checks SHAP explainer
+│   └── test_modeling.py                   # checks modeling pipeline & XGBoost
 ├── requirements.txt
 ├── .gitignore
-└── README.md 
+├── LICENSE
+└── README.md
 ```
 
 ---
@@ -70,6 +81,26 @@ source .venv/bin/activate   # Windows: .venv\Scripts\activate
 
 pip install --upgrade pip
 pip install -r requirements.txt
+```
+
+---
+
+## Testing
+
+Basic smoke tests are included to validate the core utilities:
+
+- `tests/test_cleaning.py` – checks that the cleaning pipeline returns a
+  consistent, numeric schema and normalizes key fields.
+- `tests/test_modeling.py` – verifies that the modeling pipeline can split the
+  data, fit the XGBoost pipeline, and produce valid churn probabilities.
+- `tests/test_explain.py` – verifies that a SHAP explainer can be created for
+  the XGBoost model and returns transformed features.
+
+To run the tests:
+
+```bash
+pip install -r requirements.txt   # if not already installed
+pytest
 ```
 
 ## Extending the project

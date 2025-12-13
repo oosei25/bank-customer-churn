@@ -7,3 +7,4 @@ shap
 jupyter
 matplotlib
 seaborn
+pytest
