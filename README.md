@@ -19,25 +19,28 @@ walk-through notebook.
 bank-customer-churn/
 ├── churn_utils/
 │   ├── __init__.py
-│   ├── io.py             # data loading / saving
-│   ├── cleaning.py       # cleaning & type coercion
-│   ├── features.py       # feature engineering helpers
-│   ├── modeling.py       # train/test split & sklearn pipelines
-│   ├── evaluation.py     # metrics, classification report, lift@k
-│   ├── viz.py            # EDA plots (churn by segment, distributions)
-│   └── explain.py        # SHAP-based global & local explanations
+│   ├── cleaning.py        # cleaning & type coercion
+│   ├── evaluation.py      # metrics, classification report, lift@k
+│   ├── explain.py         # SHAP-based global & local explanations
+│   ├── features.py        # feature engineering helpers
+│   ├── io.py              # data loading / saving
+│   ├── modeling.py        # train/test split & sklearn pipelines
+│   └── viz.py             # EDA plots (churn by segment, distributions)
 ├── data/
 │   ├── raw/
-│   │   ├── Bank_Churn_Messy.xlsx        # original messy source (multi-sheet)
-│   │   └── bank_churn_raw.csv           # flat raw export
+│   │   ├── Bank_Churn_Data_Dictionary.csv # field descriptions
+│   │   └── Bank_Churn_Messy.xlsx          # original messy Excel (two sheets)
 │   └── processed/
-│       └── bank_churn_clean.csv         # cleaned, model-ready dataset
+│       └── bank_churn_clean.csv           # cleaned, model-ready dataset
 ├── notebooks/
-│   └── 01_churn_eda_and_model.ipynb     # main analysis notebook
+│   ├── 01_churn_eda_and_model.ipynb       # main interactive notebook
+│   ├── 01_churn_eda_and_model.md          # Markdown export (full narrative)
+│   └── 01_churn_eda_and_model_files/      # images referenced by the .md
 ├── outputs/
-│   └── shap_summary_xgb.png             # example explainability plot
+│   └── shap_summary_xgb.png               # example SHAP summary plot
 ├── requirements.txt
-└── README.md
+├── .gitignore
+└── README.md 
 ```
 
 ---
