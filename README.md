@@ -58,7 +58,7 @@ bank-customer-churn/
 
 ## Dataset
 
-The data is based on the public [Bank Customer Churn sample (10,000 customers)](https://mavenanalytics.io/data-playground/bank-customer-churn?utm_source=chatgpt.com) with:
+The data is based on the public [Bank Customer Churn sample (10,000 customers)](https://mavenanalytics.io/data-playground/bank-customer-churn) with:
 
 - Customer profile – age, gender, geography, estimated salary
 - Relationship info – tenure, balance, number of products, credit card flag, active member flag
@@ -102,6 +102,8 @@ To run the tests:
 pip install -r requirements.txt   # if not already installed
 pytest
 ```
+
+---
 
 ## Extending the project
 
